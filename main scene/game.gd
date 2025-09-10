@@ -7,8 +7,10 @@ const base_fen: String = "2g3r3g1/s1s1s1s1s1s1/12/12/12/12/S1S1S1S1S1S1/2G3R3G1/
 ouhtcmkpthuo/wwwwwwwwwwww/12/12/12/12/WWWWWWWWWWWW/OUHTCMKPTHUO/\
 2b3e3b1/1d1d1d1d1d1d/12/12/12/12/1D1D1D1D1D1D/2B3E3B1"
 
+const test = preload("res://pieces/piece_scenes/sylph.tscn")
+
 # Creates empty 3D array to fill with pieces
-func _ready():	
+func _ready():
 	var board_array = []
 	var levels: int = 3
 	var files: int = 12
@@ -21,14 +23,8 @@ func _ready():
 			board_array[x][y] = []
 			board_array[x][y].resize(ranks)    # Z-dimension
 			for z in ranks:
-				#board_array[x][y][z] = []
-				board_array[x][y][z] = [str(str(x+1) + String.chr(y+97) + str(8-z))]
-	
-	#print(board_array[0][1][0])
-	#print(board_array)
-				
-	#var test = "g".unicode_at(0)-"a".unicode_at(0)
-	#print(board_array[0][98-97][0])
+				board_array[x][y][z] = []
+				#board_array[x][y][z] = [str(str(x+1) + String.chr(y+97) + str(8-z))]
 				
 	fill_board(base_fen, board_array)
 	
@@ -74,6 +70,8 @@ func fill_board(fen, array):
 			
 		else:
 			array[level][file-97][rank] = c
+			if c == 's':
+				add_child(test.instantiate())
 		file += 1
 		
 	#print_board(array)

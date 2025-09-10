@@ -26,8 +26,9 @@ func _process(delta):
 	phi += direction.x * rotate_speed * delta
 	position = radius * Vector3(sin(theta) * cos(phi), cos(theta) + float(board_level)/radius, sin(theta) * sin(phi))
 	
-	# Clamp vertical angle
-	theta = clamp(theta, 0.2, PI * 0.55)
+	# Clamp camera
+	theta = clamp(theta, 0.15, PI * 0.7)
+	radius = clamp(radius, 5, 15)
 	
 func _input(event):
 	if event.is_action_pressed("zoom_in"):
@@ -51,6 +52,7 @@ func _input(event):
 	for action_name in board_actions.keys():
 		if event.is_action_pressed(action_name):
 			var target_level = board_actions[action_name]
+			if board_level == target_level: break
 			board_level = target_level
 			smooth(rotation)
 	
@@ -60,11 +62,9 @@ func _input(event):
 		#print(event.relative)
 		#look_at_vector = event.position
 	
-	radius = clamp(radius, 5, 25)
-	
 func smooth(init_rot):
 	var last_rot = rotation
 	look_at(Vector3.ZERO, Vector3.UP)
 	var tween = create_tween()
-	tween.tween_property(self, "rotation", last_rot, 1).from(init_rot)
+	tween.tween_property(self, "rotation", last_rot, .01).from(init_rot)
 	

@@ -15,7 +15,7 @@ void vertex() {
 void fragment() {	
 	vec3 g = floor(v_world_pos / tile_size);
     float parity = mod(g.x + g.y + g.z, 2.0);
-    ALBEDO = mix(black, white, parity);
+    ALBEDO = mix(white, black, parity);
 	
 	if (v_world_pos.x < -6.0 || v_world_pos.z < -4.0 || v_world_pos.x > 6.0 || v_world_pos.z > 4.0){
 		ALBEDO = edge_color;

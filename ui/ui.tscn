@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=3 uid="uid://8lsb00esj2rt"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_iax21"]
+[ext_resource type="Texture2D" uid="uid://ddndgc0hiievg" path="res://images/Untitled.jpg" id="1_oc1a7"]
+[ext_resource type="Shader" path="res://ui/ui_button.gdshader" id="2_dt6mt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrmbo"]
+shader = ExtResource("2_dt6mt")
+shader_parameter/outline_thickness = 1.0
+
+[sub_resource type="FontFile" id="FontFile_ay8wi"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/100/0/ascent = 0.0
+cache/0/100/0/descent = 0.0
+cache/0/100/0/underline_position = 0.0
+cache/0/100/0/underline_thickness = 0.0
+cache/0/100/0/scale = 1.0
+cache/0/100/0/kerning_overrides/100/0 = Vector2(0, 0)
+cache/0/100/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/100/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ljcw"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_iax21")
+
+[node name="MaterialDifference" type="MarginContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialDifference"]
+layout_mode = 2
+
+[node name="BoardButtons" type="MarginContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -480.0
+offset_right = 459.0
+offset_bottom = 4320.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoardButtons"]
+material = SubResource("ShaderMaterial_mrmbo")
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="BoardButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_ay8wi")
+theme_override_font_sizes/font_size = 100
+text = "Boards"
+horizontal_alignment = 1
+
+[node name="Board1" type="TextureButton" parent="BoardButtons/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("1_oc1a7")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BoardButtons/VBoxContainer/Board1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.458188
+anchor_top = 0.422474
+anchor_right = 0.506969
+anchor_bottom = 0.542683
+offset_left = -128.5
+offset_top = -306.5
+offset_right = 128.5
+offset_bottom = 306.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 500
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Board2" type="TextureButton" parent="BoardButtons/VBoxContainer"]
+material = SubResource("ShaderMaterial_6ljcw")
+use_parent_material = true
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("1_oc1a7")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BoardButtons/VBoxContainer/Board2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -361.0
+offset_right = 142.5
+offset_bottom = 321.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 500
+text = "2"
+
+[node name="Board3" type="TextureButton" parent="BoardButtons/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("1_oc1a7")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BoardButtons/VBoxContainer/Board3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -341.0
+offset_right = 142.5
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 500
+text = "3"
+
+[connection signal="board1_button" from="." to="." method="_on_board_1_button"]
+[connection signal="button_down" from="BoardButtons/VBoxContainer/Board1" to="." method="_on_board_1_button_down"]
+[connection signal="button_down" from="BoardButtons/VBoxContainer/Board2" to="." method="_on_board_2_button_down"]
+[connection signal="button_down" from="BoardButtons/VBoxContainer/Board3" to="." method="_on_board_3_button_down"]
