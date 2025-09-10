@@ -7,7 +7,21 @@ const base_fen: String = "2g3r3g1/s1s1s1s1s1s1/12/12/12/12/S1S1S1S1S1S1/2G3R3G1/
 ouhtcmkpthuo/wwwwwwwwwwww/12/12/12/12/WWWWWWWWWWWW/OUHTCMKPTHUO/\
 2b3e3b1/1d1d1d1d1d1d/12/12/12/12/1D1D1D1D1D1D/2B3E3B1"
 
-const test = preload("res://pieces/piece_scenes/sylph.tscn")
+const sylph = preload("res://pieces/piece_scenes/sylph.tscn")
+#const griffin = preload("res://pieces/piece_scenes/griffin.tscn")
+#const dragon = preload("res://pieces/piece_scenes/dragon.tscn")
+#const warrior = preload("res://pieces/piece_scenes/warrior.tscn")
+#const oliphant = preload("res://pieces/piece_scenes/oliphant.tscn")
+#const unicorn = preload("res://pieces/piece_scenes/unicorn.tscn")
+#const hero = preload("res://pieces/piece_scenes/hero.tscn")
+#const thief = preload("res://pieces/piece_scenes/thief.tscn")
+#const cleric = preload("res://pieces/piece_scenes/cleric.tscn")
+#const mage = preload("res://pieces/piece_scenes/mage.tscn")
+#const king = preload("res://pieces/piece_scenes/king.tscn")
+#const paladin = preload("res://pieces/piece_scenes/paladin.tscn")
+#const dwarf = preload("res://pieces/piece_scenes/dwarf.tscn")
+#const basilisk = preload("res://pieces/piece_scenes/basilisk.tscn")
+#const elemental = preload("res://pieces/piece_scenes/elemental.tscn")
 
 # Creates empty 3D array to fill with pieces
 func _ready():
@@ -71,7 +85,7 @@ func fill_board(fen, array):
 		else:
 			array[level][file-97][rank] = c
 			if c == 's':
-				add_child(test.instantiate())
+				add_child(sylph.instantiate())
 		file += 1
 		
 	#print_board(array)
