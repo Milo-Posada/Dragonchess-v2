@@ -1,0 +1,25 @@
+Piece (algebraic name) #value - object piece:
+Sylph (S) 1 - butterfly wings 
+Griffin (G) 5 - bird wings
+Dragon (R) 10 - dragon wings
+Warrior (W) 1 - sword
+Oliphant (O) 5 - elephant
+Unicorn (U) 2.5 - unicorn
+Hero (H) 4.5 - cape	(for now)
+Thief (T) 4 - dagger
+Cleric (C) 8 - mace
+Mage (M) 9 - rod
+King (K) - crown
+Paladin (P) 11 - shield
+Dwarf (D) 2 - viking helmet(?) or gnome hat
+Basilisk (B) 3 - snake
+Elemental (E) 4 - elemental
+	
+Base Fen:
+2g3r3g1/s1s1s1s1s1s1/12/12/12/12/S1S1S1S1S1S1/2G3R3G1/ouhtcmkpthuo/wwwwwwwwwwww/12/12/12/12/WWWWWWWWWWWW/OUHTCMKPTHUO/2b3e3b1/1d1d1d1d1d1d/12/12/12/12/1D1D1D1D1D1D/2B3E3B1
+
+Alternative Fen:
+1g3r3g2/s1s1s1s1s1s1/12/12/12/12/S1S1S1S1S1S1/1G3R3G2/ouhtckmpthuo/wwwwwwwwwwww/12/12/12/12/WWWWWWWWWWWW/OUHTCKMPTHUO/1b3e3b2/d1d1d1d1d1d1/12/12/12/12/D1D1D1D1D1D1/1B3E3B2
+
+Jean-Louis Cazaux Fen:
+2g3r3g1/1s1s1s1s1s1s/12/12/12/12/1S1S1S1S1S1S/2G3R3G1/ouhtcmkpthuo/wwwwwwwwwwww/12/12/12/12/WWWWWWWWWWWW/OUHTCMKPTHUO/2b3e3b1/1d1d1d1d1d1d/12/12/12/12/1D1D1D1D1D1D/2B3E3B1

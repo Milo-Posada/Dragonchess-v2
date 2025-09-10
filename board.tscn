@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjg8386mu2dhx"]
+
+[ext_resource type="Shader" path="res://board.gdshader" id="2_pulym"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7i4ax"]
+render_priority = 0
+shader = ExtResource("2_pulym")
+shader_parameter/white = Color(1, 1, 1, 1)
+shader_parameter/black = Color(0, 0, 0, 1)
+shader_parameter/edge_color = Color(0.866989, 0.746143, 0.608703, 1)
+shader_parameter/highlight = Color(231, 207, 180, 1)
+shader_parameter/tile_size = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_tri0g"]
+
+[node name="Board" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
+
+[node name="CSGBox3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(12.2, 0, 0, 0, 0.25, 0, 0, 0, 8.2, 6, 0, 4)
+material_override = SubResource("ShaderMaterial_7i4ax")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_tri0g")
