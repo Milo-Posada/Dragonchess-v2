@@ -10,6 +10,7 @@
 script = ExtResource("1_vdu88")
 
 [node name="Boards" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 script = ExtResource("2_486rl")
 
 [node name="Board1" parent="Boards" instance=ExtResource("2_4ul80")]

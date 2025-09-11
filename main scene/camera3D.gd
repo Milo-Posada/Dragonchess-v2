@@ -24,7 +24,7 @@ func _process(delta):
 	var direction = Input.get_vector("move_right", "move_left", "move_up", "move_down")
 	theta += direction.y * rotate_speed * delta
 	phi += direction.x * rotate_speed * delta
-	position = radius * Vector3(sin(theta) * cos(phi), cos(theta) + float(board_level)/radius, sin(theta) * sin(phi))
+	position = radius * Vector3(sin(theta) * cos(phi), cos(theta) + float(board_level)/radius, sin(theta) * sin(phi)) 
 	
 	# Clamp camera
 	theta = clamp(theta, 0.15, PI * 0.7)
@@ -39,7 +39,7 @@ func _input(event):
 		#Default values
 		radius = 13
 		theta = PI/2
-		phi = PI
+		phi = 0
 		look_at_vector = Vector3(0,1,0)
 		board_level = 1
 		

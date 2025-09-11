@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbbgo362xju2t"]
+
+[ext_resource type="PackedScene" uid="uid://bjxc1haojjng5" path="res://pieces/piece.tscn" id="1_go6jj"]
+[ext_resource type="Script" path="res://pieces/piece_scenes/basilisk.gd" id="2_3tnub"]
+[ext_resource type="PackedScene" uid="uid://dbhp28ypfsejo" path="res://pieces/models/Snake.glb" id="2_qly5h"]
+
+[node name="Snake" instance=ExtResource("1_go6jj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+script = ExtResource("2_3tnub")
+
+[node name="Snake" parent="CollisionShape3D" index="0" instance=ExtResource("2_qly5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

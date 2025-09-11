@@ -1,8 +1,6 @@
 @icon("res://images/Dragonchess_gameboard.png")
 extends Node3D
 
-# Order of pieces is board number, file letter, rank number
-
 # FEN order starts with last rank (from left-most file to the right) and highest level (1) to the bottom
 const base_fen: String = "2g3r3g1/s1s1s1s1s1s1/12/12/12/12/S1S1S1S1S1S1/2G3R3G1/\
 ouhtcmkpthuo/wwwwwwwwwwww/12/12/12/12/WWWWWWWWWWWW/OUHTCMKPTHUO/\
@@ -21,8 +19,11 @@ const sylph = preload("res://pieces/piece_scenes/sylph.tscn")
 #const king = preload("res://pieces/piece_scenes/king.tscn")
 #const paladin = preload("res://pieces/piece_scenes/paladin.tscn")
 #const dwarf = preload("res://pieces/piece_scenes/dwarf.tscn")
-#const basilisk = preload("res://pieces/piece_scenes/basilisk.tscn")
+const basilisk = preload("res://pieces/piece_scenes/basilisk.tscn")
 #const elemental = preload("res://pieces/piece_scenes/elemental.tscn")
+
+const white_material = preload("res://pieces/white_piece.tres")
+const black_material = preload("res://pieces/black_piece.tres")
 
 # Creates empty 3D array to fill with pieces
 func _ready():
@@ -48,7 +49,7 @@ func fill_board(fen, array):
 	# Variable defaults
 	var slashes: int = 0 #counts levels
 	var level: int = 0 #top board
-	var file: int = 97 #file a
+	var file: int = 0 #file a
 	var rank: int = 0 #rank 8
 	
 	var fen_length = fen.length()
@@ -75,21 +76,64 @@ func fill_board(fen, array):
 			if slashes == 8:
 				slashes = 0
 				level += 1
-				file = 97
+				file = 0
 				rank = 0
 				continue
-		if file > 108:
-			file = 97
+		if file > 11:
+			file = 0
 			rank += 1
 			continue
 			
 		else:
-			array[level][file-97][rank] = c
-			if c == 's':
-				add_child(sylph.instantiate())
+			array[level][file][rank] = c
+			create_from_fen_char(c, level, file, rank)
 		file += 1
 		
 	#print_board(array)
+	
+const PIECE_MAP = {
+	's': sylph,
+	#'g': griffin,
+	#'r': dragon,
+	#'w': warrior,
+	#'o': oliphant,
+	#'u': unicorn,
+	#'h': hero,
+	#'t': thief,
+	#'c': cleric,
+	#'m': mage,
+	#'k': king,
+	#'p': paladin,
+	#'d': dwarf,
+	'b': basilisk,
+	#'e': elemental,
+}
+
+func board_to_world(file: int, rank: int) -> Vector3:
+	var x = float(file) + 0.5
+	var z = float(rank) + 0.5
+	return Vector3(x, 0.6, z)
+
+var piece_counters := {}  # e.g. { "s": 2, "S": 1 }
+func next_piece_name(c: String) -> String:
+	if not piece_counters.has(c):
+		piece_counters[c] = 1
+	else:
+		piece_counters[c] += 1
+	return "%s%d" % [c, piece_counters[c]]
+
+func create_from_fen_char(c: String, level, file, rank):
+	var lower_c = c.to_lower()
+	if PIECE_MAP.has(lower_c):
+		var piece_scene = PIECE_MAP[lower_c]
+		var piece = piece_scene.instantiate()
+		piece.is_white = bool(c < 'a')
+		piece.name = next_piece_name(c)  # e.g. "p1", "s2", "S1"
+		piece.position = board_to_world(file, rank)
+		$Boards.get_child(level).add_child(piece)
+		
+	#else:
+		#print("Invalid FEN: ", c, " not a valid character.")
 
 # Provides no functionality, simply here for a visual on the console
 func print_board(array):

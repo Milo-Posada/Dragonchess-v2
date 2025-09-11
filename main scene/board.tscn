@@ -10,6 +10,7 @@ shader_parameter/black = Color(0, 0, 0, 1)
 shader_parameter/edge_color = Color(0.866989, 0.746143, 0.608703, 1)
 shader_parameter/highlight = Color(231, 207, 180, 1)
 shader_parameter/tile_size = 1.0
+shader_parameter/transparency = 0.9
 
 [sub_resource type="BoxMesh" id="BoxMesh_tri0g"]
 
