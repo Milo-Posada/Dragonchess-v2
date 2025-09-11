@@ -53,7 +53,7 @@ func _input(event):
 		if event.is_action_pressed(action_name):
 			var target_level = board_actions[action_name]
 			if board_level == target_level: break
-			board_level = target_level
+			board_level = target_level+1
 			smooth(rotation)
 	
 	if event.is_action_pressed("drag"):

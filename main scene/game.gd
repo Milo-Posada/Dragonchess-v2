@@ -1,3 +1,4 @@
+@icon("res://images/Dragonchess_gameboard.png")
 extends Node3D
 
 # Order of pieces is board number, file letter, rank number
