@@ -1,14 +1,16 @@
 extends StaticBody3D
 class_name Piece
 
-var mesh: Node3D = null
-
+# Constants
 const white_material = preload("res://pieces/white_piece.tres")
 const black_material = preload("res://pieces/black_piece.tres")
 const shaders = preload("res://pieces/piece.gdshader")
 const overlay = preload("res://pieces/piece_overlay.tres")
 
+# General piece-specific properties
+var piece_type: String
 var is_white: bool
+var mesh: Node3D = null
 
 func _ready():
 	print("run in piece")
